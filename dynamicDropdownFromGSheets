@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <form>
+        <select id="dropdown"></select>
+    </form>
+
+    <script>
+        // Replace with your own Google Sheets API endpoint
+        var googleSheetsAPI = 'https://sheets.googleapis.com/v4/spreadsheets/{spreadsheetId}/values/{range}?key={YOUR_API_KEY}';
+
+        $.getJSON(googleSheetsAPI, function(data) {
+            var dropdown = $('#dropdown');
+            data.values.forEach(function(item) {
+                dropdown.append($('<option></option>').val(item[0]).html(item[0]));
+            });
+        });
+    </script>
+</body>
+</html>
